@@ -17,10 +17,54 @@ import java.util.Set;
  * Implement Lombok annotations to eliminate boilerplate code.
  */
 
+@Entity
+@Table(name = "student")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@ToString(exclude = "courses")
 public class Student {
 
+    @Id
+    @Column(name = "email", length = 50, nullable = false, unique = true)
+    @NonNull
+    private String email;
 
+    @Column(name = "name", length = 50, nullable = false)
+    @NonNull
+    private String name;
+
+    @Column(name = "password", length = 50, nullable = false)
+    @NonNull
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "student_courses",
+            joinColumns = @JoinColumn(name = "student_email", referencedColumnName = "email"),
+            inverseJoinColumns = @JoinColumn(name = "courses_id", referencedColumnName = "id")
+    )
+    private Set<Course> courses;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return email.equals(student.email);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+    }
+}
 
 
 
