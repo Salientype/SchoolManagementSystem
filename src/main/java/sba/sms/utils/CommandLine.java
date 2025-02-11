@@ -29,10 +29,9 @@ public class CommandLine {
      *
      */
     public static void addData(){
-        /*
 
-        StudentService studentService = new StudentService();
-        CourseService courseService = new CourseService();
+        StudentService studentService = new StudentService(HibernateUtil.getSessionFactory());
+        CourseService courseService = new CourseService(HibernateUtil.getSessionFactory());
         studentService.createStudent(new Student("reema@gmail.com", "reema brown", PASSWORD));
         studentService.createStudent(new Student("annette@gmail.com", "annette allen", PASSWORD));
         studentService.createStudent(new Student("anthony@gmail.com", "anthony gallegos", PASSWORD));
@@ -49,6 +48,5 @@ public class CommandLine {
         courseService.createCourse(new Course("Web Services", "Raheem Abolfathzadeh"));
         courseService.createCourse(new Course("Microservices", "Eric Heilig"));
 
-        */
     }
 }

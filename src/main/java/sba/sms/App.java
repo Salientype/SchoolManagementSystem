@@ -6,6 +6,7 @@ import sba.sms.models.Student;
 import sba.sms.services.CourseService;
 import sba.sms.services.StudentService;
 import sba.sms.utils.CommandLine;
+import sba.sms.utils.HibernateUtil;
 
 import java.util.List;
 import java.util.Scanner;
@@ -31,12 +32,13 @@ import java.util.Scanner;
 
 @Log
 public class App {
-    static final  StudentService studentService = new StudentService();
-    static final  CourseService courseService = new CourseService();
+
+    static final  StudentService studentService = new StudentService(HibernateUtil.getSessionFactory());
+    static final  CourseService courseService = new CourseService(HibernateUtil.getSessionFactory());
 
     public static void main(String[] args) {
 
-       CommandLine.addData();
+        CommandLine.addData();
 
         Scanner input = new Scanner(System.in);
         int userInput;
