@@ -55,7 +55,7 @@ public class StudentServiceTest {
     public void testGetAllStudents() {
         List<Student> students = studentService.getAllStudents();
         assertNotNull(students);
-        assertTrue(students.size() >= 1);
+        assertFalse(students.isEmpty());
     }
 
     @Test
@@ -92,6 +92,6 @@ public class StudentServiceTest {
         studentService.createStudent(student);
         List<Course> courses = studentService.getStudentCourses("john.doe@example.com");
         assertNotNull(courses);
-        assertTrue(courses.size() >= 0);
+        assertFalse(courses.isEmpty());
     }
 }
