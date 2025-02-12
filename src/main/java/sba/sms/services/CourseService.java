@@ -36,9 +36,6 @@ public class CourseService implements CourseI {
         }
     }
 
-    /**
-     * Return course if exists, also handle commit, rollback, and exceptions.
-     */
     @Override
     public Course getCourseById(int courseId) {
         Transaction transaction = null;
@@ -56,9 +53,6 @@ public class CourseService implements CourseI {
         return course;
     }
 
-    /**
-     * Return all courses from database, also handle commit, rollback, and exceptions.
-     */
     @Override
     public List<Course> getAllCourses() {
         Transaction transaction = null;
