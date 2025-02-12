@@ -1,18 +1,13 @@
 package sba.sms.services;
 
-import lombok.extern.java.Log;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
 import sba.sms.dao.StudentI;
 import sba.sms.models.Course;
 import sba.sms.models.Student;
-import sba.sms.utils.HibernateUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +16,6 @@ import java.util.List;
  * provides implementation for each method. Lombok @Log used to
  * generate a logger file.
  */
-
-import java.util.List;
 
 public class StudentService implements StudentI {
 
